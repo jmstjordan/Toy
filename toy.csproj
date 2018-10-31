@@ -14,12 +14,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="SwashBuckle.AspNetCore.MicrosoftExtensions" Version="0.5.0" />
+    <PackageReference Include="Swagger.Net.UI" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="3.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="3.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Services\FileService.s" />
-    <Compile Remove="Services\IFileService.cs" />
-    <Compile Remove="Services\FileService.cs" />
-    <Compile Remove="Services\IFileService.cs" />
-  </ItemGroup>
 </Project>
