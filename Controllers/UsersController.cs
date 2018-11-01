@@ -22,8 +22,7 @@ namespace toy.Controllers
         [HttpGet]
         public IActionResult GetUsers()
         {
-            var users = GetUsers();
-            return Ok(users);
+            return Ok(usersService.GetUsers());
         }
 
         [HttpGet("query")]
