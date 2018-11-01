@@ -19,21 +19,26 @@ namespace toy.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Group>> GetGroups()
+        public IActionResult GetGroups()
         {
-            return groupsService.GetGroups();
+            return Ok(groupsService.GetGroups());
         }
 
         [HttpGet("query")]
-        public async Task<List<Group>> GetGroupsByQuery(string name, string gid, string[] members)
+        public IActionResult GetGroupsByQuery(string name, string gid, List<string> members)
         {
-            return groupsService.GetGroupsByQuery(name, gid, null);
+            return Ok(groupsService.GetGroupsByQuery(name, gid, members));
         }
 
         [HttpGet("{gid}")]
-        public async Task<Group> GetByGid(string gid)
+        public IActionResult GetByGid(string gid)
         {
-            return groupsService.GetGroup(gid);
+            var group = groupsService.GetGroup(gid);
+            if(group == null)
+            {
+                return NotFound();
+            }
+            return Ok(group);
         }
 
     }

@@ -20,27 +20,33 @@ namespace toy.Controllers
         }
 
         [HttpGet]
-        public async Task<List<User>> GetUsers()
+        public IActionResult GetUsers()
         {
-            return usersService.GetUsers();
+            var users = GetUsers();
+            return Ok(users);
         }
 
         [HttpGet("query")]
-        public async Task<List<User>> GetUsersByQuery(string name, string uid, string gid, string comment, string home, string shell)
+        public IActionResult GetUsersByQuery(string name, string uid, string gid, string comment, string home, string shell)
         {
-            return usersService.GetUserByQuery(name, uid, gid, comment, home, shell);
+            return Ok(usersService.GetUserByQuery(name, uid, gid, comment, home, shell));
         }
 
         [HttpGet("{uid}")]
-        public async Task<User> GetUserByUid(string uid)
+        public IActionResult GetUserByUid(string uid)
         {
-            return usersService.GetUser(uid);
+            var user = usersService.GetUser(uid);
+            if(user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
         }
 
         [HttpGet("{uid}/groups")]
-        public async Task<List<Group>> GetUserGroupsByUid(string uid)
+        public IActionResult GetUserGroupsByUid(string uid)
         {
-            return usersService.GetUserGroups(uid);
+            return Ok(usersService.GetUserGroups(uid));
         }
     }
 }

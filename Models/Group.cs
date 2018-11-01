@@ -7,6 +7,6 @@ namespace toy.Models
     {
         public string Name { get; set; }
         public string Gid { get; set; }
-        public List<User> Members { get; set; }
+        public List<string> Members { get; set; }
     }
 }
