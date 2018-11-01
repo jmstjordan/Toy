@@ -12,13 +12,14 @@ namespace Toy.Tests
         string groupsFilePath = "etcgroup_test";
         string usersFilePath = "etcpasswd_test";
         string[] usersLines = {
-                $"_dev:*:1:-1:Developer Documentation:/var/empty:/usr/bin/false",
-                $"_csv:*:2:263:CSV Server:/var/empty:/usr/bin/false",
-                $"_app:*:3:250:Application Server:/var/empty:/usr/bin/false"
+            "$_analyticsd:*:263:263:Analytics Daemon:/var/db/analyticsd:/usr/bin/false",
+            "$_fpsd:*:265:265:FPS Daemon:/var/db/fpsd:/usr/bin/false",
+            "$_timed:*:266:266:Time Sync Daemon:/var/db/timed:/usr/bin/false"
             };
         string[] groupLines = {
-                $"_analyticsusers:*:250:_analyticsd,_networkd,_timed",
-                $"_analyticsd:*:263:_analyticsd"
+            $"_analyticsd:*:263:_analyticsd",
+            $"_fpsd:*:265:_fpsd",
+            $"_timed:*:266:"
             };
 
         public UserServiceTests()
@@ -58,7 +59,9 @@ namespace Toy.Tests
             GenerateFile(usersLines, usersFilePath);
             GenerateFile(usersLines, groupsFilePath);
 
-            
+            var groups = service.GetUserGroups("3");
+            Assert.True(groups.Count == 1);
+            Assert.Equal("_analyticsusers", groups[0].Name);
 
             File.Delete(usersFilePath);
             File.Delete(groupsFilePath);
