@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using toy.Models;
+using System.Web.Http;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,9 +26,10 @@ namespace toy.Controllers
         }
 
         [HttpGet("query")]
-        public IActionResult GetGroupsByQuery(string name, string gid, List<string> members)
+        public IActionResult GetGroupsByQuery(string name, string gid, string[] members)
         {
-            return Ok(groupsService.GetGroupsByQuery(name, gid, members));
+            Console.WriteLine(members);
+            return Ok(groupsService.GetGroupsByQuery(name, gid, new List<string>(members)));
         }
 
         [HttpGet("{gid}")]

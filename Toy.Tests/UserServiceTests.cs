@@ -12,15 +12,22 @@ namespace Toy.Tests
         string groupsFilePath = "etcgroup_test";
         string usersFilePath = "etcpasswd_test";
         string[] usersLines = {
-            "$_analyticsd:*:263:263:Analytics Daemon:/var/db/analyticsd:/usr/bin/false",
-            "$_fpsd:*:265:265:FPS Daemon:/var/db/fpsd:/usr/bin/false",
-            "$_timed:*:266:266:Time Sync Daemon:/var/db/timed:/usr/bin/false"
-            };
+            "$federer:x:1001:1006::/home/federer:",
+            "$lebron:x:1002:1007::/home/lebron:",
+            "$janmichael:x:1003:1008::/home/janmichael:",
+            "$mycat:x:1004:1009::/home/mycat:"
+        };
         string[] groupLines = {
-            $"_analyticsd:*:263:_analyticsd",
-            $"_fpsd:*:265:_fpsd",
-            $"_timed:*:266:"
-            };
+            $"swiss:x:1001:federer",
+            $"usa:x:1002:lebron,janmichael",
+            $"athlete:x:1003:federer,lebron",
+            $"engineer:x:1004:janmichael",
+            $"lawyer:x:1005:",
+            $"federer:x:1006:",
+            $"lebron:x:1007:",
+            $"janmichael:x:1008:",
+            $"mycat:x:1009:"
+        };
 
         public UserServiceTests()
         {

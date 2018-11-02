@@ -78,7 +78,7 @@ namespace toy.Services
         {
             var user = GetUser(uid);
             var groups = groupsService.GetGroups();
-            return groups.FindAll(group => group.Gid == user.Gid);
+            return groups.FindAll(group => group.Members.Contains(user.Name));
         }
 
         public List<User> GetUsers()
