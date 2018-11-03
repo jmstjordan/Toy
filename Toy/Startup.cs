@@ -124,6 +124,7 @@ namespace toy
             {
                 if (line.StartsWith("#", StringComparison.Ordinal))
                 {
+                    // this is a check for my mac, whose format starts with a few title strings starting with a #
                     continue;
                 }
                 if (line.Count(f => f == ':') != 6)
