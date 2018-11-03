@@ -67,7 +67,7 @@ namespace toy.Services
                     {
                         continue;
                     }
-                    if (members.Count() != 0 && members.Intersect(group.Members).Count() != members.Count())
+                    if (members != null && members.Count() != 0 && members.Intersect(group.Members).Count() != members.Count())
                     {
                         continue;
                     }
@@ -85,7 +85,6 @@ namespace toy.Services
                 return null;
             }
             string[] parts = line.Split(":");
-            Console.WriteLine(parts);
             return new Group
             {
                 Name = parts[0],

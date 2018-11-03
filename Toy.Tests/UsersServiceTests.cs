@@ -1,52 +1,22 @@
 using System;
 using System.IO;
-using toy.Controllers;
-using toy.Services;
 using Xunit;
 
 namespace Toy.Tests
 {
-    public class UserServiceTests : BaseServiceTests, IDisposable
+    public class UserServiceTests : BaseServiceTests
     {
-        private IUsersService service;
-        string groupsFilePath = "etcgroup_test";
-        string usersFilePath = "etcpasswd_test";
-        string[] usersLines = {
-            $"federer:x:1001:1006:Greatest Tennis Player of All Time:/home/federer:/usr/bin/false",
-            $"lebron:x:1002:1007::/home/lebron:/usr/bin/false",
-            $"janmichael:x:1003:1008:Greatest Jan-Michael of all time:/home/janmichael:/usr/bin/false",
-            $"mycat:x:1004:1009:Greatest Cat of all time:/home/mycat:"
-        };
-        string[] groupLines = {
-            $"swiss:x:1001:federer",
-            $"usa:x:1002:lebron,janmichael",
-            $"athlete:x:1003:federer,lebron",
-            $"engineer:x:1004:janmichael",
-            $"lawyer:x:1005:",
-            $"federer:x:1006:",
-            $"lebron:x:1007:",
-            $"janmichael:x:1008:",
-            $"mycat:x:1009:"
-        };
-
-        public UserServiceTests()
-        {
-            IGroupsService groupsService = new GroupsService(groupsFilePath);
-            service = new UsersService("etcpasswd_test", groupsService);
-
-            GenerateFile(usersLines, usersFilePath);
-            GenerateFile(groupLines, groupsFilePath);
-        }
+        public UserServiceTests() : base("users"){}
 
         [Fact]
-        public void GetUsersTest()
+        public void GetUsers()
         {
             var users = service.GetUsers();
             Assert.True(users.Count == 4);
         }
 
         [Fact]
-        public void GetUserTest()
+        public void GetUser()
         {
             var fed = service.GetUser("1001");
             Assert.Equal($"federer", fed.Name);
@@ -66,6 +36,13 @@ namespace Toy.Tests
 
             var myCatGroups = service.GetUserGroups("1004");
             Assert.True(myCatGroups.Count == 0);
+        }
+
+        [Fact]
+        public void GetUsersByQuery()
+        {
+            var users = service.GetUsersByQuery(null, null, null, null, null, null);
+            Assert.True(users.Count == 4);
         }
 
         [Fact]
@@ -99,10 +76,14 @@ namespace Toy.Tests
             Assert.True(users.Count == 3);
         }
 
-        public void Dispose()
+        [Fact]
+        public void GetUsersByQueryAllFields()
         {
-            File.Delete(usersFilePath);
-            File.Delete(groupsFilePath);
+            var users = service.GetUsersByQuery("lebron", "1002", "1007", "", $"/home/lebron", $"/usr/bin/false");
+            Assert.True(users.Count == 1);
+
+            var usersNullComment = service.GetUsersByQuery("lebron", "1002", "1007", "", $"/home/lebron", $"/usr/bin/false");
+            Assert.True(users.Count == 1);
         }
     }
 }
