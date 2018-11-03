@@ -49,3 +49,20 @@ dotnet test
 
 ### API Endpoints
 
+#### GET /users
+Return a list of all users on the system, as defined in the users file.
+
+#### GET /users/query[?name=<nq>][&uid=<uq>][&gid=<gq>][&comment=<cq>][&home=< hq>][&shell=<sq>]
+Return a list of users matching all of the specified query fields.
+
+#### GET /users/<uid>
+Return a single user with <uid>.
+
+#### GET /groups
+Return a list of all groups on the system, a defined by the groups file
+
+#### GET /groups/query[?name=<nq>][&gid=<gq>][&member=<mq1>[&member=<mq2>][&. ..]]
+Return a list of groups matching all of the specified query fields. 
+
+#### GET /groups/<gid>
+Return a single group with <gid>.
