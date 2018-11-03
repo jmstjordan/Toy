@@ -7,8 +7,6 @@ namespace Toy.Tests
 {
     public class GroupsServicesTests : BaseServiceTests
     {
-        public GroupsServicesTests() : base("groups"){ }
-
         [Fact]
         public void GetGroups()
         {

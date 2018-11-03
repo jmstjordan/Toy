@@ -6,8 +6,6 @@ namespace Toy.Tests
 {
     public class UserServiceTests : BaseServiceTests
     {
-        public UserServiceTests() : base("users"){}
-
         [Fact]
         public void GetUsers()
         {

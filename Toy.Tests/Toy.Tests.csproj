@@ -15,4 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Toy\Toy.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="testfiles\" />
+  </ItemGroup>
 </Project>
