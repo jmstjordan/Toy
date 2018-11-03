@@ -37,7 +37,7 @@ Or, you can look at my test files in Toy.Tests/testfiles
 
 ### Swagger
 
-This application uses swagger to make use easier. Fire the app up and navigate to http://localhost:5000/swagger to use the SwaggerUI.
+This application uses swagger to make use easier. Fire the app up and navigate to http://localhost:5001/swagger to use the SwaggerUI.
 
 ### Testing
 
