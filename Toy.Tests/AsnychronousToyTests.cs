@@ -17,19 +17,16 @@ namespace Toy.Tests
         {
             Task task1 = Task.Factory.StartNew(() => TaskGetUser("1001"));
             Task task2 = Task.Factory.StartNew(() => TaskGetUser("1001"));
-            Task task3 = Task.Factory.StartNew(() => TaskGetUser("1002"));
-            Task task4 = Task.Factory.StartNew(() => TaskGetGroup("1001"));
-            Task task5 = Task.Factory.StartNew(() => TaskGetGroup("1002"));
+            Task task3 = Task.Factory.StartNew(() => TaskGetUser("1001"));
+            Task task4 = Task.Factory.StartNew(() => TaskGetUser("1001"));
+            Task task5 = Task.Factory.StartNew(() => TaskGetUser("1001"));
+            Task task6 = Task.Factory.StartNew(() => TaskGetUser("1001"));
+            Task task7 = Task.Factory.StartNew(() => TaskGetUser("1001"));
+            Task task8 = Task.Factory.StartNew(() => TaskGetUser("1001"));
 
-            Task.WaitAll(task1, task2, task3, task4, task5);
+            Task.WaitAll(task1, task2, task3, task4, task5, task6, task7, task8);
 
-            Assert.True(retUsers.Count == 3);
-            Assert.True(retUsers.Find(user => user.Name == "federer") != null);
-            Assert.True(retUsers.Find(user => user.Name == "lebron") != null);
-
-            Assert.True(retGroups.Count == 2);
-            Assert.True(retGroups.Find(group => group.Name == "swiss") != null);
-            Assert.True(retGroups.Find(group => group.Name == "usa") != null);
+            Assert.True(retUsers.Count == 8);
         }
 
         private void TaskGetUser(string uid)
