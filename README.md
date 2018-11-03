@@ -18,7 +18,7 @@ dotnet run
 
 This will expose the user and group information for the default path, which is /etc/passwd and /etc/group.
 
-To use different different files, pass them in as command line arguments using /usersPath and /groupsPath:
+To use different user/group files, pass them in as command line arguments using /usersPath and /groupsPath:
 
 ```sh
 dotnet run /usersPath=<ABSOLUTE_PATH_TO_USERS_FILE> /groupsPath=<ABSOLUTE_PATH_TO_GROUPS_FILE>
@@ -37,7 +37,7 @@ Or, you can look at my test files in Toy.Tests/testfiles
 
 ### Swagger
 
-This application uses swagger to make use easier. Navigate to http://localhost:5000/swagger to use the SwaggerUI.
+This application uses swagger to make use easier. Fire the app up and navigate to http://localhost:5000/swagger to use the SwaggerUI.
 
 ### Testing
 
@@ -50,7 +50,7 @@ dotnet test
 ### API Endpoints
 
 #### GET /users
-Return a list of all users on the system, as defined in the users file.
+Return a list of all users, as defined in the users file.
 
 #### GET /users/query[?name={nq}][&uid={uq}][&gid={gq}][&comment={cq}][&home={hq}][&shell={sq}]
 Return a list of users matching all of the specified query fields.
@@ -59,7 +59,7 @@ Return a list of users matching all of the specified query fields.
 Return a single user with {uid}.
 
 #### GET /groups
-Return a list of all groups on the system, a defined by the groups file
+Return a list of all groups, a defined by the groups file
 
 #### GET /groups/query[?name={nq}][&gid={gq}][&member={mq1}[&member={mq2}][&. ..]]
 Return a list of groups matching all of the specified query fields. 
