@@ -126,10 +126,6 @@ namespace toy
                 {
                     continue;
                 }
-                if (string.IsNullOrWhiteSpace(line))
-                {
-                    return false;
-                }
                 if (line.Count(f => f == ':') != 6)
                 {
                     return false;
