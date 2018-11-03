@@ -14,11 +14,15 @@ namespace toy
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var config = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .Build();
+
+            CreateWebHostBuilder(args).UseConfiguration(config).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+               .UseStartup<Startup>();
     }
 }
