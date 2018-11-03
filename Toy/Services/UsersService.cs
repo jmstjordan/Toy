@@ -33,7 +33,7 @@ namespace toy.Services
             return null;
         }
 
-        public List<User> GetUserByQuery(string name, string uid, string gid, string comment, string home, string shell)
+        public List<User> GetUsersByQuery(string name, string uid, string gid, string comment, string home, string shell)
         {
             List<User> users = new List<User>();
             string line;

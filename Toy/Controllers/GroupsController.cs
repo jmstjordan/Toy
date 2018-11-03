@@ -26,10 +26,9 @@ namespace toy.Controllers
         }
 
         [HttpGet("query")]
-        public IActionResult GetGroupsByQuery(string name, string gid, string[] members)
+        public IActionResult GetGroupsByQuery(string name, string gid, [FromQuery] string[] member)
         {
-            Console.WriteLine(members);
-            return Ok(groupsService.GetGroupsByQuery(name, gid, new List<string>(members)));
+            return Ok(groupsService.GetGroupsByQuery(name, gid, new List<string>(member)));
         }
 
         [HttpGet("{gid}")]

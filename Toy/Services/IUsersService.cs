@@ -8,6 +8,6 @@ namespace toy.Controllers
         List<User> GetUsers();
         User GetUser(string uid);
         List<Group> GetUserGroups(string uid);
-        List<User> GetUserByQuery(string name, string uid, string gid, string comment, string home, string shell);
+        List<User> GetUsersByQuery(string name, string uid, string gid, string comment, string home, string shell);
     }
 }

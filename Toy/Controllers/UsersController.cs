@@ -28,7 +28,7 @@ namespace toy.Controllers
         [HttpGet("query")]
         public IActionResult GetUsersByQuery(string name, string uid, string gid, string comment, string home, string shell)
         {
-            return Ok(usersService.GetUserByQuery(name, uid, gid, comment, home, shell));
+            return Ok(usersService.GetUsersByQuery(name, uid, gid, comment, home, shell));
         }
 
         [HttpGet("{uid}")]

@@ -67,7 +67,7 @@ namespace toy.Services
                     {
                         continue;
                     }
-                    if (members.Count() != 0 && members.Intersect(group.Members).Count() == 0)
+                    if (members.Count() != 0 && members.Intersect(group.Members).Count() != members.Count())
                     {
                         continue;
                     }
