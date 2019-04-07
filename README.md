@@ -24,6 +24,22 @@ To use different user/group files, pass them in as command line arguments using 
 dotnet run /usersPath=<ABSOLUTE_PATH_TO_USERS_FILE> /groupsPath=<ABSOLUTE_PATH_TO_GROUPS_FILE>
 ```
 
+### Docker
+
+To run via Docker, first build the image from the directory:
+
+```sh
+docker build -t Toy .
+```
+
+Then, run the image, exposing the the port you want as an entry (I have used 5000):
+
+```sh
+docker run -p 5000:80 toy
+```
+
+Now you should be able to hit http://localhost:5000, which will redirect traffic to the docker containers port 80.
+
 ### File Format
 
 If you are going to use custom files, they must somewhat match the format of /etc/group for groups and /etc/passwd for users. I simply verify that the fields are separated by colons (:), and that Uid and Gids parse to integers. For more information on this format, Google the format of /etc/passwd and /etc/group. Or visualize it yourself:
