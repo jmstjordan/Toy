@@ -38,7 +38,7 @@ Then, run the image, exposing the the port you want as an entry (I have used 500
 docker run -p 5000:80 toy
 ```
 
-Now you should be able to hit http://localhost:5000, which will redirect traffic to the docker containers port 80.
+Now you should be able to hit http://localhost:5000/swagger, which will redirect traffic to the docker containers port 80.
 
 ### File Format
 
